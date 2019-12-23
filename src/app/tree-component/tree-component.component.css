@@ -1,0 +1,11 @@
+.example-card{
+  margin-top: 50px;
+  background: lavender;
+}
+
+.mat-card .item-card{
+  width:60%;
+  height: 60px;
+  margin-top: 5px;
+  background: transparent;
+}

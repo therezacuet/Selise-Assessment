@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+
+      <mat-card class="example-card">
+        <mat-card-header >
+          <mat-card-title>Tree Structure</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <button mat-icon-button (click)="addNode('0')"><mat-icon>add</mat-icon>Add Node</button>
+          <ul>
+            <ng-template #recursiveList let-list>
+              <li *ngFor="let item of list">
+<!--                {{item.name}}{{' ('+item.childrens.length+')'}}<button mat-icon-button (click)="addNode(item.id)"><mat-icon>add</mat-icon></button><button mat-icon-button (click)="removeNode(item.id)"><mat-icon>clear</mat-icon></button>-->
+
+                <app-node [childMessage] = "item" (onSuccess)="getMessage($event)"></app-node>
+                <ul *ngIf="item.childrens.length > 0">
+                  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.childrens }"></ng-container>
+                </ul>
+              </li>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: nodes }"></ng-container>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
